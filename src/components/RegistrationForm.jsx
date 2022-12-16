@@ -34,6 +34,7 @@ export const RegistrationForm = () => {
   });
   const [alldata, setAlldata] = useState([]);
   const [dob, setDob] = useState("");
+  const [isEdiite, setEdit] = useState(true);
   const navigate = useNavigate();
 
   const handleSubmit = (values) => {
@@ -53,12 +54,14 @@ export const RegistrationForm = () => {
   return (
     <Formik
       initialValues={{
-        firstName: "Sumit",
-        lastName: "Singh",
-        email: "sumit@gmail.com",
-        contact: "9787897899",
-        password: "888822",
-        confirmPassword: "888822",
+        firstName: "",
+        lastName: "",
+        email: "",
+        contact: "",
+        password: "",
+        address: " ",
+        confirmPassword: "",
+        // country:""
       }}
       validationSchema={validate}
       onSubmit={handleSubmit}
@@ -69,9 +72,16 @@ export const RegistrationForm = () => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
+            backgroundColor: "aqua",
           }}
         >
           <Form style={{ width: "20rem" }}>
+            <img
+              src="https://www.freeiconspng.com/uploads/person-icon-8.png"
+              alt=""
+              height="55"
+              width={55}
+            />
             <InputFields label="First Name" name="firstName" type="text" />
             <InputFields label="last Name" name="lastName" type="text" />
             <InputFields label="Email" name="email" type="email" />
@@ -83,7 +93,7 @@ export const RegistrationForm = () => {
               name="confirmPassword"
               type="password"
             />
-            <InputFields label="Address" name="Address" type="text" />
+            <InputFields label="Address" name="address" type="text" />
             <TextField type="date" onChange={() => setDob()} />
             <InputFields label="Agree" name="Agree" type="checkbox" />
             <button
